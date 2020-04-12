@@ -329,7 +329,7 @@ class ElasticMigrateCommand extends Command
         $sourceModel = $this->getModel();
         $sourceIndexConfigurator = $sourceModel->getIndexConfigurator();
 
-        if (! in_array(Migratable::class, class_uses_recursive($sourceIndexConfigurator))) {
+        if (! in_array(Migratable::class, class_uses_recursive(get_class($sourceIndexConfigurator)))) {
             $this->error(sprintf(
                 'The %s index configurator must use the %s trait.',
                 get_class($sourceIndexConfigurator),

@@ -79,7 +79,7 @@ class ElasticIndexUpdateCommand extends Command
     {
         $configurator = $this->getIndexConfigurator();
 
-        if (! in_array(Migratable::class, class_uses_recursive($configurator))) {
+        if (! in_array(Migratable::class, class_uses_recursive(get_class($configurator)))) {
             return;
         }
 

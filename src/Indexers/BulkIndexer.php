@@ -20,7 +20,7 @@ class BulkIndexer implements IndexerInterface
 
         $bulkPayload = new TypePayload($model);
 
-        if (in_array(Migratable::class, class_uses_recursive($indexConfigurator))) {
+        if (in_array(Migratable::class, class_uses_recursive(get_class($indexConfigurator)))) {
             $bulkPayload->useAlias('write');
         }
 

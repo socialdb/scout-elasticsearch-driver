@@ -49,7 +49,7 @@ class ElasticUpdateMappingCommand extends Command
             ->set('body.'.$model->searchableAs(), $mapping)
             ->set('include_type_name', 'true');
 
-        if (in_array(Migratable::class, class_uses_recursive($configurator))) {
+        if (in_array(Migratable::class, class_uses_recursive(get_class($configurator)))) {
             $payload->useAlias('write');
         }
 

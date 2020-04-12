@@ -33,7 +33,7 @@ class SingleIndexer implements IndexerInterface
             $payload = (new DocumentPayload($model))
                 ->set('body', $modelData);
 
-            if (in_array(Migratable::class, class_uses_recursive($indexConfigurator))) {
+            if (in_array(Migratable::class, class_uses_recursive(get_class($indexConfigurator)))) {
                 $payload->useAlias('write');
             }
 

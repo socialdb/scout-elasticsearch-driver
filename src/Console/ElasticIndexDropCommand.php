@@ -51,7 +51,7 @@ class ElasticIndexDropCommand extends Command
      */
     protected function resolveIndexName($configurator)
     {
-        if (in_array(Migratable::class, class_uses_recursive($configurator))) {
+        if (in_array(Migratable::class, class_uses_recursive(get_class($configurator)))) {
             $payload = (new RawPayload)
                 ->set('name', $configurator->getWriteAlias())
                 ->get();
