@@ -349,6 +349,7 @@ class ElasticEngine extends Engine
 
         $query
             ->orderBy($model->getScoutKeyName())
+            ->get()
             ->unsearchable();
     }
 }
